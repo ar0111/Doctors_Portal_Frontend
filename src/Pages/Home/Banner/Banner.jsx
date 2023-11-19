@@ -10,8 +10,8 @@ const Banner = () => {
         background: `url(${landing})`,
         backgroundSize: 'cover'
       }
-    } className="hero py-28 container mx-auto">
-      <div className="flex justify-between px-10 gap-20 items-center text-left">
+    } className="hero py-60 container mx-auto">
+      <div className="flex justify-between px-10 gap-20 items-center text-left flex-col-reverse md:flex-row">
         
         <div>
           <h1 className="text-5xl font-bold">Your New Smile Starts <br /> Here</h1>

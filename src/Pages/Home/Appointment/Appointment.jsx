@@ -5,7 +5,7 @@ import PrimaryButton from "../../../Components/PrimaryButton/PrimaryButton";
 
 const Appointment = () => {
   return (
-    <section className="mt-32" style={{backgroundImage: `url(${appointment})`}}>
+    <section className="mt-32 py-10 md:py-0" style={{backgroundImage: `url(${appointment})`}}>
       <div className="hero">
         <div className="hero container mx-auto">
           <div className="flex justify-between px-10 gap-20 items-center text-left">
