@@ -1,7 +1,7 @@
 import React from 'react';
 
-const AppointmentOptions = ({option}) => {
-    const { name, slots } = option;
+const AppointmentOptions = ({appointmentOption, setTreatment}) => {
+    const { name, slots } = appointmentOption;
 
     return (
         <div>
@@ -10,12 +10,12 @@ const AppointmentOptions = ({option}) => {
                     <h2 className="card-title text-secondary">{name}</h2>
                     <p>{slots.length > 0 ? slots[0] : "Try Another Day"}</p>
                     <p>{slots.length} {slots.length > 1 ? "Spaces" : "Space"}</p>
-                    <button
-                        className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white uppercase"
-                        onClick={() => document.getElementById("booking-modal").showModal()}
-                    >
-                        open modal
-                    </button>
+
+                    <div className="card-actions justify-center">
+                        <label htmlFor="booking-modal" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white"
+                        onClick={() => setTreatment(appointmentOption)}
+                        >Book Appointment</label>
+                    </div>
                 </div>
             </div>
         </div>
