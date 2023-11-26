@@ -19,12 +19,12 @@ const AvailableAppointments = ({selectedDate}) => {
         <div className='container mx-auto'>
             <div className='text-c xnter my-24'>
                 <p className='text-secondary'>Available Services on {format(selectedDate, 'PP')}</p>
-                <p>Please select a service. {appointmentOption.length}</p>
+                <p>Please select a service.</p>
 
                 <div className='text-left grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-5 md:px-0'>
                     {
                         appointmentOption.map(appointmentOption => <AppointmentOptions
-                        key={appointmentOption.id}
+                        key={appointmentOption._id}
                         appointmentOption={appointmentOption}
                         setTreatment={setTreatment}
                         ></AppointmentOptions>)

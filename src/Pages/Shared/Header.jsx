@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut = ()=>{
+    logOut()
+    .then(()=>{})
+    .catch(err=>console.log(err))
+  }
+
   const menuItems = (
     <>
       <li><Link to = '/'>Home</Link></li>
@@ -9,7 +18,14 @@ const Header = () => {
       <li><Link to = '/appointment'>Appointment</Link></li>
       <li><Link to = '/reviews'>Reviews</Link></li>
       <li><Link to = '/contact-us'>Contact Us</Link></li>
-      <li><Link to = '/login'>Login</Link></li>
+      
+      {
+        user?.uid? <>
+          <li><Link to = '/dashboard'>Dashboard</Link></li>
+          <li><button onClick={handleSignOut}>Sign Out</button></li>
+        </> : 
+        <li><Link to = '/login'>Login</Link></li>
+      }
     </>
   );
 
