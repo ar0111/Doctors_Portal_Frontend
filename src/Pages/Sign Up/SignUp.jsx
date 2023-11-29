@@ -63,7 +63,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-control mt-3">
-                        <button className="btn btn-accent">Login</button>
+                        <button className="btn btn-accent">Sign Up</button>
                     </div>
 
                     {

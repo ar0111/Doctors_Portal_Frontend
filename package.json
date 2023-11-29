@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.8.7",
     "date-fns": "^2.30.0",
     "firebase": "^10.6.0",
     "localforage": "^1.10.0",
