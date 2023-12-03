@@ -7,7 +7,7 @@ const AllUser = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async()=>{
-            const res = await fetch('http://localhost:7000/users');
+            const res = await fetch('https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllUser = () => {
 
     const handleMakeAdmin=(id)=> {
         // console.log(id);
-        fetch(`http://localhost:7000/users/admin/${id}`, {
+        fetch(`https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users/admin/${id}`, {
             method:'PUT'
         })
         .then(res => res.json())
@@ -27,6 +27,25 @@ const AllUser = () => {
             }
         })
         
+    }
+
+    const handleDelete = (user)=>{
+        console.log(user);
+        const aggree = window.confirm(`Are you want to delete ${user.name}`);
+        if(aggree){
+            // console.log("Yes Aggree");
+            fetch(`https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users/admin/${user._id}`, {
+                method: "DELETE"
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                if(data.deletedCount > 0){
+                    toast.success("Delete User Successfully")
+                    refetch();
+                }
+            })
+        }
     }
 
     return (
@@ -52,7 +71,7 @@ const AllUser = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user?.role !== 'admin' && <button onClick={()=>handleMakeAdmin(user._id)} className='btn btn-neutral'>Make Admin</button>}</td>
-                            <td><button className='btn btn-neutral'>Remove User</button></td>
+                            <td><button onClick={()=>handleDelete(user)} className='btn btn-neutral'>Remove User</button></td>
                         </tr>)
                        }
                     </tbody>

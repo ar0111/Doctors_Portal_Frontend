@@ -27,7 +27,7 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
 
     console.log(booking);
 
-    fetch('http://localhost:7000/bookings', {
+    fetch('https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/bookings', {
       method: "POST",
       headers:{
         'content-type': 'application/json'
