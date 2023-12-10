@@ -6,7 +6,7 @@ const MyAppointment = () => {
 
     const {user} = useContext(AuthContext);
 
-    const url = `https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/bookings?email=${user?.email}`;
+    const url = `http://localhost:7000/bookings?email=${user?.email}`;
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],

@@ -7,7 +7,7 @@ const useAdmin = (email) => {
 
     useEffect(()=>{
         if(email){
-            fetch(`https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users/admin/${email}`)
+            fetch(`http://localhost:7000/users/admin/${email}`)
             .then(res => res.json())
             .then(data=>{
                 // console.log(data);

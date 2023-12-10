@@ -7,7 +7,7 @@ const AllUser = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async()=>{
-            const res = await fetch('https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users');
+            const res = await fetch('http://localhost:7000/users');
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllUser = () => {
 
     const handleMakeAdmin=(id)=> {
         // console.log(id);
-        fetch(`https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users/admin/${id}`, {
+        fetch(`http://localhost:7000/users/admin/${id}`, {
             method:'PUT'
         })
         .then(res => res.json())
@@ -34,7 +34,7 @@ const AllUser = () => {
         const aggree = window.confirm(`Are you want to delete ${user.name}`);
         if(aggree){
             // console.log("Yes Aggree");
-            fetch(`https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users/admin/${user._id}`, {
+            fetch(`http://localhost:7000/users/admin/${user._id}`, {
                 method: "DELETE"
             })
             .then(res=>res.json())

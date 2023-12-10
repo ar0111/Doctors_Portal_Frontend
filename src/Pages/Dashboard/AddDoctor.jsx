@@ -13,7 +13,7 @@ const AddDoctor = () => {
     const { data: specialities = [], isLoading } = useQuery({
         queryKey: ['appointmentSpeciality'],
         queryFn: async()=>{
-            const res = await fetch("https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/appointmentSpeciality");
+            const res = await fetch("http://localhost:7000/appointmentSpeciality");
             const data = await res.json();
             return data;
         }
@@ -29,9 +29,9 @@ const AddDoctor = () => {
         formData.append('email', data.email);
         formData.append('speciality', data.speciality);
         formData.append('image', image);
-        // console.log(formData);
+        console.log(formData);
 
-        fetch('https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/doctors',{
+        fetch('http://localhost:7000/doctors',{
             method: 'POST',
             body: formData
         })
@@ -41,6 +41,7 @@ const AddDoctor = () => {
                 toast.success('Doctor Added Successfully')
             }
         })
+        .catch(err => console.log("Doctor Error ",err))
         
     }
 

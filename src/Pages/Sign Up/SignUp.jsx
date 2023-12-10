@@ -34,7 +34,7 @@ const SignUp = () => {
 
     const saveUser = (name, email) => {
         const user = {name, email};
-        fetch('https://final-server-p20dc2jtt-arafat-rahmans-projects.vercel.app/users', {
+        fetch('http://localhost:7000/users', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
