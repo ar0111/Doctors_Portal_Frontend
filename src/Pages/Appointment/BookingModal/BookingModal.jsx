@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
   const date = format(selectedDate, 'PP');
-  const {name:treatmentName, slots} = treatment;
+  const {name:treatmentName, slots, price} = treatment;
   const {user} = useContext(AuthContext);
 
   const handleBooking = (event)=>{
@@ -22,12 +22,13 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
       patient : name,
       slot,
       email,
-      phone
+      phone, 
+      price
     }
 
     // console.log(booking);
 
-    fetch('http://localhost:7000/bookings', {
+    fetch('https://doctor-portal-server-production-bfcb.up.railway.app/bookings', {
       method: "POST",
       headers:{
         'content-type': 'application/json'

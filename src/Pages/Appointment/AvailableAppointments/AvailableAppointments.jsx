@@ -13,7 +13,7 @@ const AvailableAppointments = ({selectedDate}) => {
     console.log('treatment', treatment);
 
     // useEffect(() => {
-    //     fetch('http://localhost:7000/appointmentOptions')
+    //     fetch('https://doctor-portal-server-production-bfcb.up.railway.app/appointmentOptions')
     //     .then(res => res.json())
     //     .then(data => setAppointmentOption(data))
     // },[])
@@ -21,7 +21,7 @@ const AvailableAppointments = ({selectedDate}) => {
     const { data: appointmentOption = [], refetch, isLoading } = useQuery({
         queryKey: ['appointmentOptions', date],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:7000/appointmentOptions?date=${date}`);
+            const res = await fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/appointmentOptions?date=${date}`);
             const data = await res.json();
             return data;
         }

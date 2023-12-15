@@ -9,7 +9,7 @@ const EachReview = ({review, refetch}) => {
         const aggree = window.confirm(`Are you want to delete this user ${review.name} review`);
         if(aggree){
             // console.log("Yes Aggree");
-            fetch(`http://localhost:7000/reviews/${review._id}`, {
+            fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/reviews/${review._id}`, {
                 method: "DELETE"
             })
             .then(res=>res.json())

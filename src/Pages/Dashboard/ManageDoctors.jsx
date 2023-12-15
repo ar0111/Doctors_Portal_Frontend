@@ -8,7 +8,7 @@ const ManageDoctors = () => {
     const { data: doctors = [], refetch, isLoading } = useQuery({
         queryKey: ['doctors'],
         queryFn: async()=>{
-            const res = await fetch("http://localhost:7000/doctors");
+            const res = await fetch("https://doctor-portal-server-production-bfcb.up.railway.app/doctors");
             const data = await res.json();
             return data;
         }
@@ -23,7 +23,7 @@ const ManageDoctors = () => {
         const aggree = window.confirm(`Are you want to delete ${user.name}`);
         if(aggree){
             // console.log("Yes Aggree");
-            fetch(`http://localhost:7000/doctors/${user._id}`, {
+            fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/doctors/${user._id}`, {
                 method: "DELETE"
             })
             .then(res=>res.json())

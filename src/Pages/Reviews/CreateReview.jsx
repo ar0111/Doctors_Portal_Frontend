@@ -27,7 +27,7 @@ const CreateReview = () => {
             rating
         }
 
-        fetch('http://localhost:7000/reviews', {
+        fetch('https://doctor-portal-server-production-bfcb.up.railway.app/reviews', {
             method: "POST",
             headers:{
                 'content-type': 'application/json'

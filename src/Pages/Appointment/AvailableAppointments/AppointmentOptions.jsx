@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppointmentOptions = ({appointmentOption, setTreatment}) => {
-    const { name, slots } = appointmentOption;
+    const { name, slots, price } = appointmentOption;
 
     return (
         <div>
@@ -10,6 +10,7 @@ const AppointmentOptions = ({appointmentOption, setTreatment}) => {
                     <h2 className="card-title text-secondary">{name}</h2>
                     <p>{slots.length > 0 ? slots[0] : "Try Another Day"}</p>
                     <p>{slots.length} {slots.length > 1 ? "Spaces" : "Space"}</p>
+                    <p><small>Price: {price}</small></p>
 
                     <div className="card-actions justify-center">
                         <label htmlFor="booking-modal" className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white"

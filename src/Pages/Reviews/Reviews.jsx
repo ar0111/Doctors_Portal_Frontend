@@ -10,7 +10,7 @@ const Reviews = () => {
     const { data: reviews = [], refetch, isLoading } = useQuery({
         queryKey: ['reviews'],
         queryFn: async()=>{
-            const res = await fetch("http://localhost:7000/reviews");
+            const res = await fetch("https://doctor-portal-server-production-bfcb.up.railway.app/reviews");
             const data = await res.json();
             return data;
         }
