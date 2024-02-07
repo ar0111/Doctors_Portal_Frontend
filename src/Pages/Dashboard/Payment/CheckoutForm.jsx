@@ -13,7 +13,7 @@ const CheckoutForm = ({booking}) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:7000/create-payment-intent", {
+        fetch("https://final-server-rho.vercel.app/create-payment-intent", {
           method: "POST",
           headers: { 
             "Content-Type": "application/json" 
@@ -69,6 +69,7 @@ const CheckoutForm = ({booking}) => {
             setCardError(confirmError.message);
             return;
         }
+        // console.log(paymentIntent);
         if(paymentIntent.status === "succeeded"){
             const payment = {
                 price,
@@ -77,7 +78,7 @@ const CheckoutForm = ({booking}) => {
                 bookingId: _id
             }
 
-            fetch("http://localhost:7000/payments", {
+            fetch("https://final-server-rho.vercel.app/payments", {
                 method: "POST",
                 headers: { 
                   "Content-Type": "application/json" 
@@ -91,12 +92,13 @@ const CheckoutForm = ({booking}) => {
                     setTransactionId(payment.transactionId);
                 }
             })
+            
         }
 
     }
     return (
         <>
-            <form className='w-1/3' onSubmit={handleSubmit}>
+            <form className='my-5 w-full md:w-1/3' onSubmit={handleSubmit}>
                 <CardElement
                 options={{
                     style: {

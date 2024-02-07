@@ -15,6 +15,7 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
     const name = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
+    console.log(name);
     
     const booking = {
       appointmentDate : date,
@@ -28,7 +29,7 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
 
     // console.log(booking);
 
-    fetch('https://doctor-portal-server-production-bfcb.up.railway.app/bookings', {
+    fetch('https://final-server-rho.vercel.app/bookings', {
       method: "POST",
       headers:{
         'content-type': 'application/json'
@@ -43,6 +44,7 @@ const BookingModal = ({treatment, selectedDate, setTreatment, refetch}) => {
         refetch();
       }
       else{
+        // console.log(data.message);
         toast.error(data.message);
       }
     })

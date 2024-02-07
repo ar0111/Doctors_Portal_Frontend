@@ -12,10 +12,10 @@ import MyAppointment from "../../Pages/Dashboard/MyAppointment";
 import AllUser from "../../Pages/Dashboard/AllUser";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddDoctor from "../../Pages/Dashboard/AddDoctor";
-import ManageDoctors from "../../Pages/Dashboard/manageDoctors";
 import ContactUs from "../../Pages/ContactUs/ContactUs";
 import Reviews from "../../Pages/Reviews/Reviews";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
+import ManageDoctors from "../../Pages/Dashboard/ManageDoctors";
 
 const router = createBrowserRouter([
   {
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/payment/:id',
-        loader:({params}) => fetch(`http://localhost:7000/bookings/${params.id}`),
+        loader:({params}) => fetch(`https://final-server-rho.vercel.app/bookings/${params.id}`),
         element: <PrivateRoute><Payment></Payment></PrivateRoute>
       }
     ]

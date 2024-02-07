@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser, updateUser} = useContext(AuthContext);
+    const {createUser, updateUser, googleSignIn} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const navigate = useNavigate();
 
@@ -32,9 +32,41 @@ const SignUp = () => {
         })
     }
 
+    const handleGoogleLogIn = ()=>{
+        googleSignIn()
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            toast.success('Your Google Registration is Successfully Done!');
+            saveGoogleUser(user.displayName, user.email)
+
+        })
+        .catch(error=>{
+            console.log(error);
+            setSignUpError(error.message);
+        })
+
+    }
+
+    const saveGoogleUser = (name, email) => {
+        const user = {name, email};
+        fetch('https://final-server-rho.vercel.app/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            navigate('/');
+        })
+    }
+
     const saveUser = (name, email) => {
         const user = {name, email};
-        fetch('https://doctor-portal-server-production-bfcb.up.railway.app/users', {
+        fetch('https://final-server-rho.vercel.app/users', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -92,7 +124,7 @@ const SignUp = () => {
                     <p>Already Have an Account? <Link className='text-secondary' to='/login'>Please Sign In</Link></p>
                     <div className="divider">OR</div>
 
-                    <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                    <button onClick={handleGoogleLogIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 </form>
             </div>
         </div>    

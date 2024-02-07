@@ -27,7 +27,7 @@ const CreateReview = () => {
             rating
         }
 
-        fetch('https://doctor-portal-server-production-bfcb.up.railway.app/reviews', {
+        fetch('https://final-server-rho.vercel.app/reviews', {
             method: "POST",
             headers:{
                 'content-type': 'application/json'

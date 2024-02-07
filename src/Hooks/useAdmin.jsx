@@ -7,7 +7,7 @@ const useAdmin = (email) => {
 
     useEffect(()=>{
         if(email){
-            fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/users/admin/${email}`)
+            fetch(`https://final-server-rho.vercel.app/users/admin/${email}`)
             .then(res => res.json())
             .then(data=>{
                 // console.log(data);

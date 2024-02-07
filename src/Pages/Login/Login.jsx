@@ -7,8 +7,9 @@ import toast from 'react-hot-toast';
 const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {signIn} = useContext(AuthContext);
+    const {signIn, forgetPassword} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -30,6 +31,18 @@ const Login = () => {
         })
     }
 
+    const handleForgetPassword = ()=>{
+        if(!userEmail){
+            toast.error("Please Enter Your Email Address");
+            return;
+        }
+
+        forgetPassword(userEmail)
+        .then(()=>{
+            toast.success("Please Check Your email and reset Your Password.")
+        })
+    }
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-98 p-3 shadow-2xl rounded-lg'>
@@ -39,7 +52,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input {...register("email")} type="email" placeholder="email" className="input input-bordered" required />
+                        <input {...register("email")} onBlur = {(e) => setUserEmail(e.target.value)} type="email" placeholder="email" className="input input-bordered" required />
                         {errors.email && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
 
@@ -52,9 +65,7 @@ const Login = () => {
                         })} type="password" placeholder="password" className="input input-bordered" required />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-                        <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label>
+                        
                     </div>
 
                     <div className="form-control mt-3">
@@ -66,10 +77,11 @@ const Login = () => {
                     }
 
                     <p>New to Doctors Portal? <Link className='text-secondary' to='/signup'>Create new account</Link></p>
-                    <div className="divider">OR</div>
-
-                    <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 </form>
+
+                <label className="label justify-center pt-0 pb-6">
+                    <button onClick={handleForgetPassword} className="label-text-alt link link-hover text-base font-semibold">Forgot password?</button>
+                </label>
             </div>
         </div>
     );

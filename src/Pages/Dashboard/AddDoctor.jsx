@@ -13,7 +13,7 @@ const AddDoctor = () => {
     const { data: specialities = [], isLoading } = useQuery({
         queryKey: ['appointmentSpeciality'],
         queryFn: async()=>{
-            const res = await fetch("https://doctor-portal-server-production-bfcb.up.railway.app/appointmentSpeciality");
+            const res = await fetch("https://final-server-rho.vercel.app/appointmentSpeciality");
             const data = await res.json();
             return data;
         }
@@ -31,7 +31,7 @@ const AddDoctor = () => {
         formData.append('image', image);
         console.log(formData);
 
-        fetch('https://doctor-portal-server-production-bfcb.up.railway.app/doctors',{
+        fetch('https://final-server-rho.vercel.app/doctors',{
             method: 'POST',
             body: formData
         })
@@ -51,7 +51,7 @@ const AddDoctor = () => {
 
     return (
         
-        <div className='w-96 p-7 shadow-2xl rounded-lg bg-base-100'>
+        <div className='w-80 md:w-96 p-7 shadow-2xl rounded-lg bg-base-100'>
             <h3 className='text-xl text-center mt-2'>Add A Doctor</h3>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
                 <div className="form-control mb-3 max-w-xs">

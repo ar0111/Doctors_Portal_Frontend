@@ -8,7 +8,7 @@ const Reviews = () => {
     const { data: reviews = [], refetch, isLoading } = useQuery({
         queryKey: ['reviews'],
         queryFn: async()=>{
-            const res = await fetch("https://doctor-portal-server-production-bfcb.up.railway.app/reviews");
+            const res = await fetch("https://final-server-rho.vercel.app/reviews");
             const data = await res.json();
             return data;
         }

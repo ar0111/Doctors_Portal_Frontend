@@ -7,7 +7,7 @@ const AllUser = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async()=>{
-            const res = await fetch('https://doctor-portal-server-production-bfcb.up.railway.app/users');
+            const res = await fetch('https://final-server-rho.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllUser = () => {
 
     const handleMakeAdmin=(id)=> {
         // console.log(id);
-        fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/users/admin/${id}`, {
+        fetch(`https://final-server-rho.vercel.app/users/admin/${id}`, {
             method:'PUT'
         })
         .then(res => res.json())
@@ -34,7 +34,7 @@ const AllUser = () => {
         const aggree = window.confirm(`Are you want to delete ${user.name}`);
         if(aggree){
             // console.log("Yes Aggree");
-            fetch(`https://doctor-portal-server-production-bfcb.up.railway.app/users/admin/${user._id}`, {
+            fetch(`https://final-server-rho.vercel.app/users/admin/${user._id}`, {
                 method: "DELETE"
             })
             .then(res=>res.json())
